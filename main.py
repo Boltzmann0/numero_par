@@ -1,22 +1,16 @@
-from microbit import *
-import random
+def Convert(num: number):
+    return num * 1.8 + 32
+def kelvin(K: number):
+    return K + 273
 
-# An error could appear if you press button B without pressing button A first.
-# If the variable 'number' has not been assigned.
-# To work around this, the value of 101 is assigned to the variable 'number'
-# at the start of the program. When you press button B the program tests
-# first to see if the value of 'number' is 101 - if it is, it shows a helpful message.
+def on_button_pressed_a():
+    basic.show_number(input.temperature())
+input.on_button_pressed(Button.A, on_button_pressed_a)
 
-number = 101
+def on_button_pressed_ab():
+    basic.show_number(kelvin(input.temperature()))
+input.on_button_pressed(Button.AB, on_button_pressed_ab)
 
-while True:
-    if button_a.was_pressed():
-        number = random.randint(1, 100)
-        display.scroll(number)
-    if button_b.was_pressed():
-        if number == 101:
-            display.scroll('no number chosen yet')
-        elif number%2 == 0:
-            display.scroll('even')
-        else:
-            display.scroll('odd')
+def on_button_pressed_b():
+    basic.show_number(Convert(input.temperature()))
+input.on_button_pressed(Button.B, on_button_pressed_b)

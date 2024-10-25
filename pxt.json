@@ -1,5 +1,5 @@
 {
-    "name": "numero_par",
+    "name": "Temperatura_conversor",
     "description": "",
     "dependencies": {
         "core": "*",
